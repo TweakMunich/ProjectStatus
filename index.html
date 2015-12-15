@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <link href="./css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="./js/controller.js"></script>
+    <title>Agile Delivery Platform (Project Overview)</title>
+</head>
+<body ng-controller="dataController">
+    <div ng-repeat="block in data.blocks" class="panel panel-{{block.status}} col-lg-6">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{block.name}}</h3>
+        </div>
+        <div class="panel-body">
+            <div ng-repeat="element in block.elements">
+                {{element.name}}
+                <div class="progress">
+                    <div class="progress-bar progress-bar-{{element.status}}" role="progressbar" aria-valuenow="{{100*element.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{100*element.progress}}%">
+                        <span class="sr-only">{{100*element.progress}}% Complete ({{element.status}})</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
